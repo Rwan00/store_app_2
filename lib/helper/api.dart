@@ -4,9 +4,18 @@ import 'package:flutter/cupertino.dart';
 import 'package:http/http.dart' as http;
 
 class API{
-  Future<dynamic> get({required String url}) async
+  Future<dynamic> get({required String url, String? token}) async
   {
-    http.Response response = await http.get(Uri.parse(url));
+    Map<String,String> headers = {};
+
+    if(token != null)
+    {
+      headers.addAll({
+        "Authorization" : "Bearer $token"
+      });
+    }
+
+    http.Response response = await http.get(Uri.parse(url),headers: headers);
 
     if(response.statusCode == 200)
       {
@@ -19,8 +28,8 @@ class API{
 
   Future<dynamic> post({
     required String url,
-    @required dynamic body,
-    @required String? token
+    dynamic body,
+    String? token
 }) async{
     Map<String,String> headers = {};
 
