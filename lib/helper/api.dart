@@ -37,8 +37,15 @@ class API{
       headers: headers
     );
 
-    Map<String,dynamic> data = jsonDecode(response.body);
-    return data;
+    if(response.statusCode == 200)
+      {
+        Map<String,dynamic> data = jsonDecode(response.body);
+        return data;
+      }
+    else
+      {
+        throw Exception("There Is A Problem With Status Code ${response.statusCode} With Body ${jsonDecode(response.body)}");
+      }
 }
 
 }
