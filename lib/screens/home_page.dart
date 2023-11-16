@@ -15,7 +15,44 @@ class HomePage extends StatelessWidget {
         backgroundColor:Theme.of(context).canvasColor,
         elevation: 0,
         centerTitle: true,
-        title: Text("New Trend",style: TextStyle(color: Colors.black),),
+        title: const Text("New Trend",style: TextStyle(color: Colors.black),),
+      ),
+      body: Center(
+        child: Container(
+          height: 110,
+          width: 210,
+          decoration: BoxDecoration(
+            boxShadow: [
+              BoxShadow(
+                blurRadius: 40,
+                color: Colors.grey.withOpacity(0.2),
+                spreadRadius: 0,
+                offset: const Offset(10,10)
+              ),
+            ],
+            borderRadius: BorderRadius.circular(10)
+          ),
+          child: const Card(
+            elevation: 10,
+            child: Padding(
+              padding: EdgeInsets.symmetric(vertical: 16.0,horizontal: 10),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  Text("HandBag Lv",style: TextStyle(color: Colors.grey,fontSize: 16),),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(r"$225",style: TextStyle(fontSize: 16),),
+                      Icon(Icons.favorite,color: Colors.red,)
+                    ],
+                  )
+                ],
+              ),
+            ),
+          ),
+        ),
       ),
     );
   }
