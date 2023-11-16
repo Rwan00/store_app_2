@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../widgets/custom_card.dart';
+
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
 
@@ -26,60 +28,23 @@ class HomePage extends StatelessWidget {
           style: TextStyle(color: Colors.black),
         ),
       ),
-      body: Center(
-        child: Stack(
+      body: Padding(
+        padding: const EdgeInsets.only(right: 16.0,left: 16,top: 65),
+        child: GridView.builder(
           clipBehavior: Clip.none,
-          children: [
-            Container(
-              height: 110,
-              width: 210,
-              decoration: BoxDecoration(boxShadow: [
-                BoxShadow(
-                    blurRadius: 40,
-                    color: Colors.grey.withOpacity(0.2),
-                    spreadRadius: 0,
-                    offset: const Offset(10, 10)),
-              ], borderRadius: BorderRadius.circular(10)),
-              child: const Card(
-                elevation: 10,
-                child: Padding(
-                  padding: EdgeInsets.symmetric(vertical: 16.0, horizontal: 10),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      Text(
-                        "HandBag Lv",
-                        style: TextStyle(color: Colors.grey, fontSize: 16),
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text(
-                            r"$225",
-                            style: TextStyle(fontSize: 16),
-                          ),
-                          Icon(
-                            Icons.favorite,
-                            color: Colors.red,
-                          )
-                        ],
-                      )
-                    ],
-                  ),
-                ),
-              ),
-            ),
-            Positioned(
-              bottom: 70,
-                left: 105,
-                child: Image.network(
-              "https://www.pngall.com/wp-content/uploads/2/Bag-PNG-Picture.png",
-              height: 100,
-            ))
-          ],
+          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 2,
+            childAspectRatio: 1.8,
+            crossAxisSpacing: 5,
+            mainAxisSpacing: 70
+          ),
+          itemBuilder: (context,index){
+            return const CardItem();
+          },
         ),
       ),
     );
   }
 }
+
+
