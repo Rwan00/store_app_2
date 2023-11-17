@@ -15,6 +15,7 @@ class MyApp extends StatelessWidget {
     return  MaterialApp(
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        canvasColor: Colors.white
         //useMaterial3: true,
       ),
       routes: {

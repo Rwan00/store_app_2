@@ -29,7 +29,7 @@ final ProductModal product;
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
                   Text(
-                    product.title,
+                    product.title.substring(0,8),
                     style: const TextStyle(color: Colors.grey, fontSize: 16),
                   ),
                   Row(
@@ -55,7 +55,8 @@ final ProductModal product;
             left: 90,
             child: Image.network(
               product.image,
-              height: 100,
+              height: 85,
+              width: 85,
             ),),
       ],
     );

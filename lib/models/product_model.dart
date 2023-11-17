@@ -19,7 +19,7 @@ class ProductModal {
     return ProductModal(
       id: jsonData["id"],
       title: jsonData["title"],
-      price: jsonData["price"],
+      price: jsonData["price"].toDouble(),
       description: jsonData["description"],
       image: jsonData["image"],
       rating: RatingModal.fromJson(jsonData["rating"]),
@@ -28,7 +28,7 @@ class ProductModal {
 }
 
 class RatingModal {
-  final double rate;
+  final dynamic rate;
   final int count;
 
   RatingModal({
@@ -38,7 +38,7 @@ class RatingModal {
 
   factory RatingModal.fromJson(jsonData) {
     return RatingModal(
-      rate: jsonData["rate"],
+      rate: jsonData["rate"].toDouble(),
       count: jsonData["count"],
     );
   }
