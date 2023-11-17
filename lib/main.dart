@@ -3,12 +3,12 @@ import 'package:store_app/screens/home_page.dart';
 
 
 void main() {
-  runApp(const StoreApp());
+  runApp(const MyApp());
 }
 
 
-class StoreApp extends StatelessWidget {
-  const StoreApp({super.key});
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -21,6 +21,7 @@ class StoreApp extends StatelessWidget {
         HomePage.id: (context) => const HomePage(),
       },
       initialRoute: HomePage.id,
+
     );
   }
 }

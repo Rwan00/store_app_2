@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:store_app/models/product_model.dart';
 
 class CardItem extends StatelessWidget {
-  const CardItem({
+   const CardItem({
+    required this.product,
     super.key,
   });
-
+final ProductModal product;
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -18,26 +20,26 @@ class CardItem extends StatelessWidget {
                 spreadRadius: 0,
                 offset: const Offset(10, 10)),
           ], borderRadius: BorderRadius.circular(10)),
-          child: const Card(
+          child:  Card(
             elevation: 10,
             child: Padding(
-              padding: EdgeInsets.symmetric(vertical: 16.0, horizontal: 10),
+              padding: const EdgeInsets.symmetric(vertical: 16.0, horizontal: 10),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
                   Text(
-                    "HandBag Lv",
-                    style: TextStyle(color: Colors.grey, fontSize: 16),
+                    product.title,
+                    style: const TextStyle(color: Colors.grey, fontSize: 16),
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        r"$225",
-                        style: TextStyle(fontSize: 16),
+                        "\$ ${product.price.toString()} ",
+                        style: const TextStyle(fontSize: 16),
                       ),
-                      Icon(
+                      const Icon(
                         Icons.favorite,
                         color: Colors.red,
                       )
@@ -49,12 +51,12 @@ class CardItem extends StatelessWidget {
           ),
         ),
         Positioned(
-            bottom: 70,
-            left: 105,
+            bottom: 85,
+            left: 90,
             child: Image.network(
-              "https://www.pngall.com/wp-content/uploads/2/Bag-PNG-Picture.png",
+              product.image,
               height: 100,
-            ))
+            ),),
       ],
     );
   }

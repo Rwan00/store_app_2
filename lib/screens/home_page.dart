@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:store_app/models/product_model.dart';
+import 'package:store_app/services/get_all_products_service.dart';
 
 import '../widgets/custom_card.dart';
 
@@ -29,22 +31,30 @@ class HomePage extends StatelessWidget {
         ),
       ),
       body: Padding(
-        padding: const EdgeInsets.only(right: 16.0,left: 16,top: 65),
-        child: GridView.builder(
-          clipBehavior: Clip.none,
-          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 2,
-            childAspectRatio: 1.8,
-            crossAxisSpacing: 5,
-            mainAxisSpacing: 70
-          ),
-          itemBuilder: (context,index){
-            return const CardItem();
-          },
-        ),
-      ),
+          padding: const EdgeInsets.only(right: 16.0, left: 16, top: 65),
+          child: FutureBuilder<List<ProductModal>>(
+            future: AllProductsService().getAllProducts(),
+            builder: (context, snapshot) {
+
+              if (snapshot.hasData) {
+                List<ProductModal> products = snapshot.data!;
+                return GridView.builder(
+                  itemCount: products.length,
+                  clipBehavior: Clip.none,
+                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 2,
+                      childAspectRatio: 1.4,
+                      crossAxisSpacing: 5,
+                      mainAxisSpacing: 70),
+                  itemBuilder: (context, index) {
+                    return  CardItem(product: products[index],);
+                  },
+                );
+              } else {
+                return const Center(child: CircularProgressIndicator());
+              }
+            },
+          )),
     );
   }
 }
-
-
