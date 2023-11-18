@@ -1,6 +1,5 @@
 import 'dart:convert';
 
-import 'package:flutter/cupertino.dart';
 import 'package:http/http.dart' as http;
 
 class API{
@@ -59,8 +58,8 @@ class API{
 
 Future<dynamic> put({
     required String url,
-    @required dynamic body,
-    @required String? token
+     dynamic body,
+    String? token
 }) async{
     Map<String,String> headers = {};
     headers.addAll({

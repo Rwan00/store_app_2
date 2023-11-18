@@ -8,7 +8,7 @@ class UpdateProductsService {
       required String desc,
       required String img,
       required String category}) async {
-    Map<String, dynamic> data = await API().post(
+    Map<String, dynamic> data = await API().put(
       url: 'https://fakestoreapi.com/products',
       body: {
         "title": title,
