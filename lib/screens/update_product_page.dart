@@ -6,7 +6,7 @@ import 'package:store_app/widgets/custom_button.dart';
 import 'package:store_app/widgets/custom_text_field.dart';
 
 class UpdateProductPage extends StatefulWidget {
-  static String id = "uptade product";
+  static String id = "update product";
 
   const UpdateProductPage({super.key});
 
@@ -79,17 +79,17 @@ class _UpdateProductPageState extends State<UpdateProductPage> {
             ),
             MyButton(
               label: 'Update',
-              onTap: () {
+              onTap: () async {
                 isLoading = true;
                 setState(() {});
                 try {
-                  updateProduct(product);
+                  await updateProduct(product);
                   print("success");
                 } catch (e) {
                   print(e.toString());
                 }
-                 isLoading = false;
-                  setState(() {});
+                isLoading = false;
+                setState(() {});
               },
             ),
           ]),
@@ -98,12 +98,13 @@ class _UpdateProductPageState extends State<UpdateProductPage> {
     );
   }
 
-  void updateProduct(ProductModal product) {
-    UpdateProductsService().updateProduct(
-        title: name!,
-        price: price!,
-        desc: desc!,
-        img: img!,
+  Future<void> updateProduct(ProductModal product) async {
+    await UpdateProductsService().updateProduct(
+        id: product.id,
+        title: name == null ? product.title : name!,
+        price: price == null ? product.price.toString() : price!,
+        desc: desc == null ? product.description : desc!,
+        img: img == null ? product.image : img!,
         category: product.category);
   }
 }

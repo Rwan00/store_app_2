@@ -31,11 +31,10 @@ class HomePage extends StatelessWidget {
         ),
       ),
       body: Padding(
-          padding: const EdgeInsets.only(right: 16.0, left: 16,top: 45),
+          padding: const EdgeInsets.only(right: 16.0, left: 16, top: 45),
           child: FutureBuilder<List<ProductModal>>(
             future: AllProductsService().getAllProducts(),
             builder: (context, snapshot) {
-
               if (snapshot.hasData) {
                 List<ProductModal> products = snapshot.data!;
                 return GridView.builder(
@@ -47,7 +46,9 @@ class HomePage extends StatelessWidget {
                       crossAxisSpacing: 5,
                       mainAxisSpacing: 70),
                   itemBuilder: (context, index) {
-                    return  CardItem(product: products[index],);
+                    return CardItem(
+                      product: products[index],
+                    );
                   },
                 );
               } else {

@@ -1,27 +1,27 @@
 class ProductModal {
-  final int id;
+  final dynamic id;
   final String title;
-  final double price;
+  final dynamic price;
   final String description;
   final String image;
   final RatingModal rating;
   final String category;
 
-  ProductModal(
-      {required this.id,
-      required this.title,
-      required this.price,
-      required this.description,
-      required this.image,
-        required this.rating,
-        required this.category,
-      });
+  ProductModal({
+    required this.id,
+    required this.title,
+    required this.price,
+    required this.description,
+    required this.image,
+    required this.rating,
+    required this.category,
+  });
 
   factory ProductModal.fromJson(jsonData) {
     return ProductModal(
       id: jsonData["id"],
       title: jsonData["title"],
-      price: jsonData["price"].toDouble(),
+      price: jsonData["price"],
       description: jsonData["description"],
       image: jsonData["image"],
       rating: RatingModal.fromJson(jsonData["rating"]),

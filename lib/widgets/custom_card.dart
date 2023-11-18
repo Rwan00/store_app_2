@@ -14,7 +14,7 @@ class CardItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigator.pushNamed(context, UpdateProductPage.id,arguments: product);
+        Navigator.pushNamed(context, UpdateProductPage.id, arguments: product);
       },
       child: Stack(
         clipBehavior: Clip.none,

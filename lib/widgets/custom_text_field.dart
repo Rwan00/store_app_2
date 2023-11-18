@@ -7,7 +7,11 @@ class InputField extends StatelessWidget {
   final TextInputType? inputType;
 
   const InputField(
-      {required this.title, required this.hint, this.onChanged, this.inputType,super.key});
+      {required this.title,
+      required this.hint,
+      this.onChanged,
+      this.inputType,
+      super.key});
 
   @override
   Widget build(BuildContext context) {
