@@ -9,14 +9,15 @@ class AddProducts {
       required String img,
       required String category}) async {
     Map<String, dynamic> data = await API().post(
-        url: 'https://fakestoreapi.com/products',
-        body: {
-          "title": title,
-          "price": price,
-          "description": desc,
-          "image": img,
-          "category": category
-        },);
+      url: 'https://fakestoreapi.com/products',
+      body: {
+        "title": title,
+        "price": price,
+        "description": desc,
+        "image": img,
+        "category": category
+      },
+    );
     return ProductModal.fromJson(data);
   }
 }

@@ -1,13 +1,13 @@
 import '../helper/api.dart';
 import '../models/product_model.dart';
 
-class UpdateProducts{
+class UpdateProducts {
   Future<ProductModal> updateProduct(
       {required String title,
-        required String price,
-        required String desc,
-        required String img,
-        required String category}) async {
+      required String price,
+      required String desc,
+      required String img,
+      required String category}) async {
     Map<String, dynamic> data = await API().post(
       url: 'https://fakestoreapi.com/products',
       body: {
@@ -16,7 +16,8 @@ class UpdateProducts{
         "description": desc,
         "image": img,
         "category": category
-      },);
+      },
+    );
     return ProductModal.fromJson(data);
   }
 }
