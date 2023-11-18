@@ -5,6 +5,7 @@ class ProductModal {
   final String description;
   final String image;
   final RatingModal rating;
+  final String category;
 
   ProductModal(
       {required this.id,
@@ -13,6 +14,7 @@ class ProductModal {
       required this.description,
       required this.image,
         required this.rating,
+        required this.category,
       });
 
   factory ProductModal.fromJson(jsonData) {
@@ -23,6 +25,7 @@ class ProductModal {
       description: jsonData["description"],
       image: jsonData["image"],
       rating: RatingModal.fromJson(jsonData["rating"]),
+      category: jsonData['category'],
     );
   }
 }

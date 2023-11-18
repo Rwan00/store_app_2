@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:store_app/models/product_model.dart';
+import 'package:store_app/services/update_products.dart';
 import 'package:store_app/widgets/custom_button.dart';
 import 'package:store_app/widgets/custom_text_field.dart';
 
@@ -8,10 +10,12 @@ class UpdateProductPage extends StatelessWidget {
   String? name;
   String? desc;
   String? img;
-  int? price;
+  String? price;
   UpdateProductPage({super.key});
   @override
   Widget build(BuildContext context) {
+    ProductModal product =
+        ModalRoute.of(context)!.settings.arguments as ProductModal;
     return Scaffold(
       appBar: AppBar(
         title: const Text(
@@ -23,10 +27,10 @@ class UpdateProductPage extends StatelessWidget {
         centerTitle: true,
       ),
       body: SingleChildScrollView(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center, 
-          children: [
-            const SizedBox(height: 100,),
+        child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
+          const SizedBox(
+            height: 100,
+          ),
           InputField(
             hint: "Enter Product Name",
             title: "Name",
@@ -46,7 +50,7 @@ class UpdateProductPage extends StatelessWidget {
             title: "Price",
             inputType: TextInputType.number,
             onChanged: (data) {
-              price = int.parse(data);
+              price = data;
             },
           ),
           InputField(
@@ -61,7 +65,14 @@ class UpdateProductPage extends StatelessWidget {
           ),
           MyButton(
             label: 'Update',
-            onTap: () {},
+            onTap: () {
+              UpdateProductsService().updateProduct(
+                  title: name!,
+                  price: price!,
+                  desc: desc!,
+                  img: img!,
+                  category: product.category);
+            },
           ),
         ]),
       ),
